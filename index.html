@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Angulas Basics!</title>
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+	<link href="styles/main.css" rel="stylesheet">
+</head>
+<body ng-app="todoListApp">
+
+	<h1>My Todos</h1>
+
+	<div class="list" ng-controller="mainCtrl">
+		<div class="add">
+			<a href="" ng-click="addTodo()">+ Add new todo</a>
+		</div>
+		<div class="item" ng-class="{ 'editing-item' : editing }" ng-repeat="todo in todos">
+			<input ng-model="todo.completed" type="checkbox">
+			<label ng-hide="editing">{{todo.title}}</label>
+			<input ng-show="editing" ng-blur="editing = false;" ng-change="edited = true" ng-model="todo.title" class="editing-label" type="text">
+			<div class="actions">
+				<a href="" ng-click="editing = !editing">edit</a>
+				<a href="" ng-click="helloConsole()">save</a>
+				<a href="" class="delete" ng-click="deleteTodo(todo, $index)">delete</a>
+			</div>	
+		</div>
+
+		{{helloConsole}}
+	</div>
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="scripts/app.js"></script>
+</body>
+</html>
