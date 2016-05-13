@@ -14,9 +14,9 @@ angular.module("todoListApp")
 		$scope.todos = response.data;
 	});
 
-	$scope.deleteTodo = function(todo, $index){
+	$scope.deleteTodo = function(todo){
 		dataService.deleteTodo(todo);
-		$scope.todos.splice($index, 1);
+		$scope.todos.splice($scope.todos.indexOf(todo), 1);
 	}
 
 	$scope.saveTodos = function(){
